@@ -14,6 +14,14 @@ const envMode: SiteMode | undefined =
       ? 'production'
       : undefined;
 
+function resolveSiteUrl(fallback: string): string {
+  if (typeof process === 'undefined') return fallback;
+  const env = process.env ?? {};
+  if (env.SITE_URL) return env.SITE_URL.replace(/\/$/, '');
+  if (env.VERCEL_PROJECT_PRODUCTION_URL) return `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  return fallback;
+}
+
 export const SITE = {
   /**
    * demo：架空店舗の制作見本（電話・LINE・SNS・地図は押すとデモ案内を表示、noindex、構造化データなし）
@@ -60,8 +68,11 @@ export const SITE = {
     mapLink: 'https://maps.google.com/?q=xxxxxxx',
   },
 
-  /** 公開URL（OGP の絶対URLに使用）。Cloudflare Pages の本番URLに合わせて変更してください */
-  siteUrl: 'https://tomoshibi-sample.pages.dev',
+  /**
+   * 公開URL（OGP 画像などの絶対URLに使用）。ビルド時に次の順で決まります：
+   * 環境変数 SITE_URL → Vercel の本番URL（VERCEL_PROJECT_PRODUCTION_URL）→ 下の既定値
+   */
+  siteUrl: resolveSiteUrl('https://tomoshibi-sample.pages.dev'),
 
   reservation: {
     idPrefix: 'TMS',

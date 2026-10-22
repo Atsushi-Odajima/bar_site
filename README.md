@@ -32,7 +32,19 @@ npm run preview    # ビルド結果の確認 http://localhost:4173
 
 その他：`npm run icons`（`src/icons/*.svg` を変換）、`npm run credits`（`src/data/photos.json` から `CREDITS.md` を生成）
 
-## デプロイ（Cloudflare Pages）
+## デプロイ（Vercel）
+
+`vercel.json` に設定済みのため、Vercel でこのリポジトリを読み込むだけで公開できます。
+
+1. Vercel のダッシュボードで「Add New… → Project」から `Atsushi-Odajima/bar_site` を選ぶ（Import）
+2. 設定は自動で入ります（Framework：Vite、Build Command：`npm run build`、Output Directory：`dist`）。そのまま「Deploy」
+3. 以降は、GitHub の `main` に取り込む（マージする）たびに本番が更新され、PR ごとにプレビューURLが発行されます
+
+- 公開URLは Vercel の本番URL（`VERCEL_PROJECT_PRODUCTION_URL`）がビルド時に自動で使われ、OGP 画像の絶対URLになります。独自ドメインを使う場合は環境変数 `SITE_URL` に設定してください。
+- 制作見本として公開する場合、環境変数 `SITE_MODE` は**設定しない**でください（既定の demo のまま＝検索結果に出ない・連絡先はデモ案内）。
+- `/reserve/`・`/admin/` は直接開いても表示されます（`/admin` のように末尾のスラッシュがない場合は自動で `/admin/` に移動します）。
+
+## デプロイ（Cloudflare Pages の場合）
 
 | 設定 | 値 |
 |---|---|

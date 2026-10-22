@@ -19,7 +19,8 @@
   ビルド時に設定ファイルから生成すれば十分なため。実行時JSを最小にでき表示が速い。
   - ビルド時テンプレート：`vite.config.ts` のプラグインが `src/templates/*.ts` を呼び、
     `src/config/site.ts`・`src/data/*` から HTML を生成（店名・メニュー・営業時間の差し替えを1か所で）。
-  - マルチページ：`/`・`/reserve/`・`/admin/`（Cloudflare Pages で直接開いても表示できる）
+  - マルチページ：`/`・`/reserve/`・`/admin/`（Vercel / Cloudflare Pages で直接開いても表示できる）
+- デプロイ：Vercel（`vercel.json`）。Cloudflare Pages 用の `public/_headers` も残している。公開URLは `SITE_URL` → `VERCEL_PROJECT_PRODUCTION_URL` → 既定値
 - アニメーション：GSAP + ScrollTrigger は**お品書きの巻物とパララックスのみ**（遅延読み込み）。
   暖簾・提灯・黒板は CSS と IntersectionObserver。Lenis は使わない（通常スクロール）。
 - スタイル：素の CSS ＋ CSS 変数（`src/styles/tokens.css`）
