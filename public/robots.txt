@@ -1,0 +1,4 @@
+# 公開デモは各ページの <meta name="robots" content="noindex"> で検索結果に出ないようにしています。
+# noindex を検索エンジンが読めるよう、ここでは全体をブロックしません。
+User-agent: *
+Allow: /
