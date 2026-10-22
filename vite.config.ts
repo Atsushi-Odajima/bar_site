@@ -1,7 +1,7 @@
 import { defineConfig, type Plugin } from 'vite';
 import { resolve } from 'node:path';
 import { SITE } from './src/config/site';
-import { head, header, footer, actionBar, demoDialog, noren, bootScript, fillKleeText, type Page } from './src/templates/layout';
+import { head, header, footer, adminHeader, adminFooter, actionBar, demoDialog, noren, bootScript, fillKleeText, type Page } from './src/templates/layout';
 import { homeMain, boardText } from './src/templates/home';
 import { reserveMain } from './src/templates/reserve';
 import { adminMain } from './src/templates/admin';
@@ -24,8 +24,8 @@ const META: Record<Page, { title: string; description: string }> = {
         : `${SITE.name}のWeb予約。人数・日付・時間・席をお選びください。`,
   },
   admin: {
-    title: `予約管理｜${SITE.name}${demoSuffix}`,
-    description: `架空店舗の制作見本です。お店側の予約管理画面の操作見本です。`,
+    title: `店舗側予約管理画面｜${SITE.name}${demoSuffix}`,
+    description: `架空店舗の制作見本です。店舗側予約管理画面の操作見本です。`,
   },
 };
 
@@ -35,14 +35,15 @@ function templates(): Plugin {
     switch (key) {
       case 'head':
         return bootScript(page === 'home') + head({ page, ...META[page] });
+      // 店舗側予約管理画面はお客様向けのヘッダー・フッター・固定バーを出さない
       case 'header':
-        return header(page);
+        return page === 'admin' ? adminHeader() : header(page);
       case 'footer':
-        return footer();
+        return page === 'admin' ? adminFooter() : footer();
       case 'actionbar':
-        return actionBar(page);
+        return page === 'admin' ? '' : actionBar(page);
       case 'dialogs':
-        return demoDialog();
+        return page === 'admin' ? '' : demoDialog();
       case 'noren':
         return page === 'home' ? noren() : '';
       case 'main':

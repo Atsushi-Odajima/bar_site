@@ -145,7 +145,7 @@ export function reserveMain(): string {
         <dl class="confirm" data-done-summary></dl>
         ${isDemo ? `<div class="notice notice--demo" role="note"><p><strong>この予約は見本のため、実際には送信されません。</strong>お店への通知・確認メールもありません。予約は、お使いのブラウザ内にだけ保存されています。</p></div>` : ''}
         <div class="done__actions">
-          <a class="btn btn--hi btn--lg" href="/admin/">${icon('list-check')}<span>お店側の管理画面で確認する</span></a>
+          <a class="btn btn--hi btn--lg" href="/admin/">${icon('list-check')}<span>店舗側予約管理画面で確認する</span></a>
           <button type="button" class="btn btn--ghost-dark btn--lg" data-restart>${icon('refresh-1')}<span>もう一度予約を体験する</span></button>
           <a class="linklike" href="/">トップページへ戻る</a>
         </div>

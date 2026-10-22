@@ -1,4 +1,4 @@
-// 予約管理の操作見本（/admin/）。動きは src/pages/admin.ts
+// 店舗側予約管理画面の操作見本（/admin/）。動きは src/pages/admin.ts
 import { SITE, isDemo } from '../config/site';
 import { icon } from './helpers';
 
@@ -6,12 +6,11 @@ export function adminMain(): string {
   return `<main id="main" class="adm">
   <div class="adm__inner">
     <header class="adm__head">
-      <p class="rsv__en" lang="en">Reservations</p>
-      <h1 class="rsv__title">予約管理<span class="adm__tag">操作見本</span></h1>
+            <h1 class="adm__title">店舗側予約管理画面<span class="adm__tag">操作見本</span></h1>
       ${
         isDemo
           ? `<div class="notice notice--demo" role="note">
-        <p class="notice__title">${icon('information')}<span>お店側の「予約管理の操作見本」です</span></p>
+        <p class="notice__title">${icon('information')}<span>予約管理の操作見本です</span></p>
         <p>この見本の予約は、お使いのブラウザ内に保存されます。別端末への共有や店舗への通知はありません。表示の予約はすべて架空のサンプルです。</p>
       </div>`
           : ''
@@ -21,7 +20,7 @@ export function adminMain(): string {
     <noscript><p class="notice">管理画面を使うには JavaScript を有効にしてください。</p></noscript>
 
     <form class="adm-login" data-login>
-      <h2 class="adm-login__title">${icon('lock')}<span>管理画面に入る</span></h2>
+      <h2 class="adm-login__title">${icon('lock')}<span>店舗側予約管理画面に入る</span></h2>
       ${isDemo ? `<p class="adm-login__hint">デモ用パスワード：<strong class="mono">${SITE.admin.demoPassword}</strong><br><small>体験用の入口です。本番の認証の仕組みではありません。</small></p>` : ''}
       <div class="field">
         <label for="adm-pass">パスワード</label>

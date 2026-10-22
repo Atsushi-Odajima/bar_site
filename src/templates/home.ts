@@ -293,7 +293,7 @@ function demoGuide(): string {
     <ul class="guide__links">
       <li><a class="guide__link" href="#top">${icon('home-1')}<span><strong>サイトを見る</strong><small>スマホでの見え方・お品書き・アクセス</small></span></a></li>
       <li><a class="guide__link" href="/reserve/">${icon('calendar')}<span><strong>予約を体験する</strong><small>お客様側の予約の流れ（3ステップ）</small></span></a></li>
-      <li><a class="guide__link" href="/admin/">${icon('list-check')}<span><strong>お店側の管理画面を見る</strong><small>予約一覧・ステータス変更（パスワード demo）</small></span></a></li>
+      <li><a class="guide__link" href="/admin/">${icon('list-check')}<span><strong>店舗側予約管理画面を見る</strong><small>予約一覧・ステータス変更（パスワード demo）</small></span></a></li>
     </ul>
     <div class="guide__cols">
       <div>

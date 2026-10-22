@@ -1,6 +1,7 @@
 import '../styles/tokens.css';
 import '../styles/base.css';
 import '../styles/app.css';
+import '../styles/admin.css';
 import { SITE } from '../config/site';
 import { initCommon, openDialog } from '../lib/common';
 import { addDays, formatJa, todayJST } from '../lib/jst';

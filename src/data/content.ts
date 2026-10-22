@@ -156,7 +156,7 @@ export const SEATS_INFO = [
     key: 'counter',
     title: 'カウンター',
     capacity: '10席',
-    body: '炉端の目の前。焼き上がる様子を眺めながら、お一人様でも気兼ねなく。夜更けはバー使いもどうぞ。',
+    body: '炉端の目の前。焼き上がる様子を眺めながら、お一人様でも気兼ねなく。',
     photo: 'counter',
     mask: 'slit',
   },

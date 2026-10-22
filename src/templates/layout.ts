@@ -103,7 +103,7 @@ export function demoBar(page: Page): string {
   <nav class="demobar__nav" aria-label="制作見本の案内">
     <a href="/"${cur('home')}>サイトを見る</a>
     <a href="/reserve/"${cur('reserve')}>予約を体験する</a>
-    <a href="/admin/"${cur('admin')}>お店側の管理画面を見る</a>
+    <a href="/admin/"${cur('admin')}>店舗側予約管理画面を見る</a>
   </nav>
 </div>`;
 }
@@ -151,6 +151,24 @@ export function footer(): string {
     <p class="site-footer__credit">${credits}</p>
     <p class="site-footer__copy" lang="en">&copy; ${SITE.nameEn}</p>
   </div>
+</footer>`;
+}
+
+/** 店舗側予約管理画面のヘッダー（お客様向けの目次・予約ボタンは出さない）*/
+export function adminHeader(): string {
+  return `${demoBar('admin')}
+<header class="adm-header">
+  <div class="adm-header__inner">
+    <p class="adm-header__shop">${SITE.name}</p>
+    <a class="adm-header__back" href="/">お客様向けサイトを見る</a>
+  </div>
+</header>`;
+}
+
+export function adminFooter(): string {
+  return `<footer class="adm-footer">
+  ${isDemo ? `<p>※このサイトは<strong>架空店舗の制作見本</strong>です。店舗・予約は架空です。</p>` : ''}
+  <p>${SITE.name}　店舗側予約管理画面</p>
 </footer>`;
 }
 

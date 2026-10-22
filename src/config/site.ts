@@ -28,7 +28,7 @@ export const SITE = {
   nameEn: 'TOMOSHIBI',
   genre: '炉端焼きと地酒の居酒屋',
   catchVertical: ['炭の音、', '酒の香。'],
-  lead: '炭火で焼く魚と野菜、県内の蔵の地酒。夜が更けたら、カウンターで静かな一杯も。',
+  lead: '炭火で焼く魚と野菜、地酒、ご馳走。',
 
   address: '〇〇県〇〇市〇〇町1-2-3',
   postalCode: '000-0000',
