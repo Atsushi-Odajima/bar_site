@@ -88,6 +88,9 @@ strong { font-weight: 700; }
 .demobar__nav { display: flex; flex-wrap: wrap; gap: 0 1.1rem; }
 .demobar__nav a { display: inline-flex; align-items: center; min-height: 40px; text-decoration: underline; text-underline-offset: 0.3em; }
 .demobar__nav a[aria-current='page'] { text-decoration: none; color: var(--on-sumi-muted); }
+@media (max-width: 767px) {
+  .demobar__nav a[aria-current='page'] { display: none; }
+}
 
 /* ---------------------------------------------------------------------
    ヘッダー

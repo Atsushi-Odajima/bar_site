@@ -401,3 +401,6 @@
 }
 .access__fig figcaption { min-width: 0; }
 .sec-head__title:focus { outline: none; }
+@media (min-width: 600px) and (max-width: 899px) {
+  .tabs { grid-template-columns: repeat(3, 1fr); }
+}

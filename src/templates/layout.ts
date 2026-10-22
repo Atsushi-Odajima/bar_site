@@ -40,12 +40,37 @@ ${isDemo ? '<meta name="robots" content="noindex">' : `<link rel="canonical" hre
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
+${page === 'home' ? restaurantJsonLd() : ''}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 ${fontLink(`https://fonts.googleapis.com/css2?${fonts}&display=swap`)}
 ${page === 'home' ? fontLink(`https://fonts.googleapis.com/css2?family=Klee+One:wght@600&display=swap&text=${KLEE_TEXT_PLACEHOLDER}`) : ''}
 ${extra}`;
+}
+
+/**
+ * 飲食店の構造化データ（JSON-LD）。架空の住所・電話を検索エンジンに渡さないよう、デモでは出力しない。
+ * 本番では src/config/site.ts の店舗情報を実際の値にしてから SITE_MODE=production でビルドする。
+ */
+function restaurantJsonLd(): string {
+  if (isDemo) return '';
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].filter(
+    (_, i) => !SITE.closedWeekdays.includes(i),
+  );
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Restaurant',
+    name: SITE.name,
+    url: `${SITE.siteUrl}/`,
+    image: `${SITE.siteUrl}/og.jpg`,
+    telephone: SITE.phone,
+    servesCuisine: ['炉端焼き', '日本酒', '居酒屋'],
+    address: { '@type': 'PostalAddress', postalCode: SITE.postalCode, streetAddress: SITE.address, addressCountry: 'JP' },
+    openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: days, opens: SITE.hours.open, closes: '23:59' }],
+    acceptsReservations: true,
+  };
+  return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
 }
 
 /** 黒板で使う文字だけを Klee One から取得する（フォントを軽くするため） */

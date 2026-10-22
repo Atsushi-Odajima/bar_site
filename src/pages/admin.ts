@@ -76,7 +76,7 @@ function render(): void {
     : '';
 
   const cur = document.querySelector<HTMLElement>('.adm-day.is-current');
-  if (cur) cur.parentElement!.scrollLeft = cur.offsetLeft - cur.parentElement!.offsetLeft - 16;
+  if (cur) cur.parentElement!.scrollLeft = cur.offsetLeft - (cur.parentElement!.clientWidth - cur.offsetWidth) / 2;
 
   $('[data-list]').innerHTML = dayRows.length
     ? `<ul class="adm-rows">${dayRows

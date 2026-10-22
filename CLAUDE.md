@@ -24,7 +24,7 @@
   暖簾・提灯・黒板は CSS と IntersectionObserver。Lenis は使わない（通常スクロール）。
 - スタイル：素の CSS ＋ CSS 変数（`src/styles/tokens.css`）
 - 配色：墨 `#1b1916` / 生成り `#efe7d8` / 炭火オレンジ `#e2793a`（文字用に濃い `#a94c14` も）
-- 書体：見出し Shippori Mincho、本文 Zen Kaku Gothic New、英字 Cormorant Garamond、黒板のみ Klee One（使用文字だけのサブセット）
+- 書体：見出し Shippori Mincho、本文 Zen Kaku Gothic New、英字 Cormorant Garamond、黒板のみ Klee One（使用文字だけのサブセット）。CSS は非ブロッキングで読み込む
 - アイコン：**MingCute（Apache-2.0）に統一**。線幅2・角丸。喫煙/禁煙・提灯・暖簾・徳利は同じ線幅で自作（`src/icons/custom-*.svg`）
 - 写真：Unsplash の実写のみ（AI生成禁止）。`public/images/` に WebP 800/1600。出典は `CREDITS.md`
 - 外部ロゴ：公式の利用条件を確認できないものはサービス名のテキストボタン（ロゴを自作・模倣しない）
@@ -57,6 +57,14 @@
 4. 演出（暖簾・巻物 → 提灯・パララックス・火の粉・黒板）
 5. 予約（3ステップ＋完了）と /admin
 6. 性能・アクセシビリティ・SEO（noindex/OGP）・Cloudflare Pages 設定・スクショ・README
+
+## 実装メモ
+
+- 写真の差し替え：`public/images/` ＋ `src/data/photos.json` → `npm run credits`
+- 画面外セクション（seats〜links）に `content-visibility: auto`（フォント読み込み時の再レイアウト対策）。
+  そのためページ内移動は滑らかスクロールにしない（着地位置がずれる）
+- 動作確認：`/reserve/?demo-fail` で保存失敗を再現
+- 外部ロゴは未使用（サービス名のテキストボタン）
 
 ## コマンド
 

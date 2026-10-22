@@ -158,7 +158,7 @@
 .adm-sum small { color: var(--ink-muted); }
 .adm-days { margin-top: 1rem; }
 .adm-days__label { font-size: var(--fs-small); color: var(--ink-muted); }
-.adm-days__list { display: flex; gap: 0.5rem; overflow-x: auto; padding: 0.35rem 0 0.5rem; }
+.adm-days__list { position: relative; display: flex; gap: 0.5rem; overflow-x: auto; padding: 0.35rem 0 0.5rem; }
 .adm-day { flex: none; display: flex; flex-direction: column; align-items: center; min-height: 56px; padding: 0.35rem 0.85rem; border: 1.5px solid var(--kinari-line); border-radius: var(--radius); background: #fbf7ef; font-weight: 700; line-height: 1.35; }
 .adm-day span { font-weight: 400; font-size: 0.875rem; color: var(--ink-muted); }
 .adm-day.is-current { background: var(--ink); border-color: var(--ink); color: var(--kinari); }
