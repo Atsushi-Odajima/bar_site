@@ -72,7 +72,7 @@ export const SITE = {
    * 公開URL（OGP 画像などの絶対URLに使用）。ビルド時に次の順で決まります：
    * 環境変数 SITE_URL → Vercel の本番URL（VERCEL_PROJECT_PRODUCTION_URL）→ 下の既定値
    */
-  siteUrl: resolveSiteUrl('https://tomoshibi-sample.pages.dev'),
+  siteUrl: resolveSiteUrl('https://tomoshibi-sample-omega.vercel.app'),
 
   reservation: {
     idPrefix: 'TMS',

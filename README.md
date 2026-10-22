@@ -12,6 +12,8 @@
 | 予約体験 | `/reserve/` | 人数・日付・時間・席 → お客様情報 → 内容確認 → デモ完了 |
 | 店舗側予約管理画面（操作見本） | `/admin/` | 日付別の予約一覧・ステータス変更・詳細・デモデータの初期化 |
 
+**公開中の見本：https://tomoshibi-sample-omega.vercel.app/**（Vercel）
+
 スクリーンショット：`docs/screenshots/`　／　紹介文・特徴説明：`docs/promo.md`
 
 ## デモ用パスワード
