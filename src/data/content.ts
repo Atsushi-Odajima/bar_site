@@ -110,7 +110,7 @@ export const MENU: MenuCategory[] = [
   },
 ];
 
-export const TODAY_SPECIALS = {
+export const TODAY_SPECIALS: { title: string; items: MenuItem[]; note: string } = {
   title: '本日のおすすめ',
   items: [
     { name: '戻り鰹のたたき', price: 980 },

@@ -13,6 +13,10 @@ interface HeadOpts {
 
 const KLEE_TEXT_PLACEHOLDER = '%%KLEE_TEXT%%';
 
+/** Web フォントの CSS を描画を止めずに読み込む（届くまでは端末の標準フォントで表示）*/
+const fontLink = (href: string): string =>
+  `<link rel="preload" as="style" href="${href}" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="${href}"></noscript>`;
+
 export function head({ page, title, description, extra = '' }: HeadOpts): string {
   const url = `${SITE.siteUrl}${page === 'home' ? '/' : `/${page}/`}`;
   const fonts = [
@@ -39,8 +43,8 @@ ${isDemo ? '<meta name="robots" content="noindex">' : `<link rel="canonical" hre
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?${fonts}&display=swap">
-${page === 'home' ? `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@600&display=swap&text=${KLEE_TEXT_PLACEHOLDER}">` : ''}
+${fontLink(`https://fonts.googleapis.com/css2?${fonts}&display=swap`)}
+${page === 'home' ? fontLink(`https://fonts.googleapis.com/css2?family=Klee+One:wght@600&display=swap&text=${KLEE_TEXT_PLACEHOLDER}`) : ''}
 ${extra}`;
 }
 

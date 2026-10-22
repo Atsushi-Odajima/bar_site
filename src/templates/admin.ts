@@ -20,7 +20,7 @@ export function adminMain(): string {
 
     <noscript><p class="notice">管理画面を使うには JavaScript を有効にしてください。</p></noscript>
 
-    <form class="adm-login" data-login hidden>
+    <form class="adm-login" data-login>
       <h2 class="adm-login__title">${icon('lock')}<span>管理画面に入る</span></h2>
       ${isDemo ? `<p class="adm-login__hint">デモ用パスワード：<strong class="mono">${SITE.admin.demoPassword}</strong><br><small>体験用の入口です。本番の認証の仕組みではありません。</small></p>` : ''}
       <div class="field">

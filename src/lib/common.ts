@@ -69,7 +69,26 @@ export function initCommon(): void {
     toggle.addEventListener('click', () => openDialog(nav, toggle));
     nav.addEventListener('click', (e) => {
       const a = (e.target as HTMLElement).closest('a');
-      if (a) nav.close();
+      if (!a) return;
+      const target = a.hash && a.pathname === location.pathname ? document.querySelector<HTMLElement>(a.hash) : null;
+      if (!target) return nav.close();
+      // ダイアログを閉じてから移動し、移動先の見出しへフォーカスする
+      e.preventDefault();
+      nav.addEventListener(
+        'close',
+        () =>
+          requestAnimationFrame(() => {
+            history.pushState(null, '', a.hash);
+            target.scrollIntoView({ block: 'start' });
+            const h = target.querySelector<HTMLElement>('h2');
+            if (h) {
+              h.tabIndex = -1;
+              h.focus({ preventScroll: true });
+            }
+          }),
+        { once: true },
+      );
+      nav.close();
     });
   }
 

@@ -109,10 +109,12 @@ safely('reveal', () => {
 // ---------------------------------------------------------------------
 // 火の粉（ヒーローのみ・少数・画面外では停止）
 // ---------------------------------------------------------------------
-safely('embers', () => {
-  const canvas = document.querySelector<HTMLCanvasElement>('.embers');
-  if (canvas && !reduceMotion.matches) startEmbers(canvas);
-});
+function initEmbers(): void {
+  safely('embers', () => {
+    const canvas = document.querySelector<HTMLCanvasElement>('.embers');
+    if (canvas && !reduceMotion.matches) startEmbers(canvas);
+  });
+}
 
 // ---------------------------------------------------------------------
 // GSAP：巻物が広がる演出とパララックス（読み込みを後回しにして初期表示を軽く）
@@ -149,4 +151,13 @@ async function initScrollEffects(): Promise<void> {
 
 const idle = (cb: () => void) =>
   'requestIdleCallback' in window ? requestIdleCallback(cb, { timeout: 2000 }) : setTimeout(cb, 600);
-window.addEventListener('load', () => idle(() => initScrollEffects().catch((e) => console.warn('[gsap]', e))), { once: true });
+// 演出は読み込み完了後、ブラウザが空いた時に始める（最初の表示と操作を優先）
+window.addEventListener(
+  'load',
+  () =>
+    idle(() => {
+      initEmbers();
+      initScrollEffects().catch((e) => console.warn('[gsap]', e));
+    }),
+  { once: true },
+);

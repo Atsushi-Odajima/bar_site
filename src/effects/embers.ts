@@ -23,10 +23,10 @@ export function startEmbers(canvas: HTMLCanvasElement): void {
   let w = 0;
   let h = 0;
 
-  const resize = () => {
-    const r = canvas.getBoundingClientRect();
-    w = r.width;
-    h = r.height;
+  // サイズは ResizeObserver から受け取る（読み込み中に強制レイアウトを起こさない）
+  const resize = (width: number, height: number) => {
+    w = width;
+    h = height;
     canvas.width = Math.round(w * dpr);
     canvas.height = Math.round(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -44,8 +44,7 @@ export function startEmbers(canvas: HTMLCanvasElement): void {
     ...e,
   });
 
-  resize();
-  const embers: Ember[] = Array.from({ length: count }, () => spawn({ life: Math.random() * 300 }));
+  const embers: Ember[] = [];
 
   let raf = 0;
   let last = 0;
@@ -95,6 +94,9 @@ export function startEmbers(canvas: HTMLCanvasElement): void {
     else stop();
   }).observe(canvas);
   document.addEventListener('visibilitychange', () => (document.hidden ? stop() : run()));
-  window.addEventListener('resize', resize, { passive: true });
-  run();
+  new ResizeObserver(([en]) => {
+    resize(en.contentRect.width, en.contentRect.height);
+    if (!embers.length) embers.push(...Array.from({ length: count }, () => spawn({ life: Math.random() * 300 })));
+    run();
+  }).observe(canvas);
 }

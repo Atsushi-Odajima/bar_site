@@ -3,6 +3,10 @@
    ===================================================================== */
 .sec { padding: var(--section-y) var(--gutter); }
 .sec > div { max-width: var(--maxw); margin-inline: auto; }
+/* グリッドの子要素が文字拡大時に画面からはみ出さないように */
+.hero > *, .about__inner > *, .specials__wrap > *, .drinks__inner > *, .seat > *, .access__grid > *, .keyinfo > div > *, .access__info > div > * { min-width: 0; }
+/* 画面外のセクションは表示されるまでレイアウトを省く（フォント読み込み時の再計算を軽くする）*/
+.seats, .courses, .faq, .access, .links { content-visibility: auto; contain-intrinsic-size: auto 1200px; }
 
 /* 縦書き（短いコピーだけに使う）*/
 .vertical { writing-mode: vertical-rl; }
@@ -61,7 +65,7 @@
    --------------------------------------------------------------------- */
 .hero { position: relative; padding-top: 1rem; }
 .hero__visual { position: relative; margin-inline: var(--gutter); }
-.hero__win { aspect-ratio: 4 / 4.2; }
+.hero__win { aspect-ratio: 4 / 3.3; }
 .hero__win .win__img { object-position: 28% 55%; }
 .embers { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
 .hero__vertical {
@@ -395,3 +399,5 @@
   .guide__links { grid-template-columns: repeat(3, 1fr); }
   .guide__cols { grid-template-columns: 1fr 1fr; gap: 3rem; }
 }
+.access__fig figcaption { min-width: 0; }
+.sec-head__title:focus { outline: none; }
