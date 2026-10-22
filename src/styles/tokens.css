@@ -1,0 +1,59 @@
+/* =====================================================================
+   デザイントークン：配色・書体・余白をここで一括管理します。
+   BAR 版などへの展開時は、主にこのファイルと src/config/site.ts を差し替えます。
+   ===================================================================== */
+:root {
+  /* 墨（暖かいほぼ黒）*/
+  --sumi: #1b1916;
+  --sumi-2: #25221e;
+  --sumi-3: #3a342c;
+  --sumi-line: rgba(239, 231, 216, 0.16);
+
+  /* 生成り（和紙）*/
+  --kinari: #efe7d8;
+  --kinari-2: #e5dac5;
+  --kinari-line: rgba(38, 34, 28, 0.18);
+
+  /* 文字色 */
+  --ink: #26221c;            /* 生成りの上の文字 12.8:1 */
+  --ink-muted: #5e554a;      /* 生成りの上の補足 5.9:1 */
+  --on-sumi: #efe7d8;        /* 墨の上の文字 14.2:1 */
+  --on-sumi-muted: #b8ad9b;  /* 墨の上の補足 7.9:1 */
+
+  /* 炭火のオレンジ（アクセントは1色のみ）*/
+  --hi: #e2793a;             /* 墨の上の文字・ボタン地 5.8:1 */
+  --hi-ink: #9a4310;         /* 生成りの上で文字として使う濃いめ */
+  --hi-glow: rgba(226, 121, 58, 0.55);
+
+  /* 黒板 */
+  --board: #1f2a25;
+  --chalk: #ece6d6;
+  --chalk-muted: #b9c2b4;
+  --chalk-hi: #f0a36b;
+
+  /* 書体 */
+  --font-mincho: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-gothic: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+  --font-latin: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-chalk: 'Klee One', var(--font-gothic);
+
+  /* 文字サイズ（本文は16px以上）*/
+  --fs-body: 1.0625rem;     /* 17px */
+  --fs-small: 0.9375rem;    /* 15px：注記のみ */
+  --fs-lead: clamp(1.125rem, 1rem + 0.5vw, 1.3125rem);
+  --fs-h2: clamp(1.75rem, 1.3rem + 2vw, 2.75rem);
+  --fs-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-price: 1.125rem;
+
+  /* 余白 */
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section-y: clamp(4.5rem, 10vw, 9rem);
+  --maxw: 1200px;
+  --radius: 4px;
+
+  /* 操作部品 */
+  --tap: 52px;              /* 主要ボタンの高さ（48px以上）*/
+  --actionbar-h: 68px;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}

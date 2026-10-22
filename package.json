@@ -1,0 +1,23 @@
+{
+  "name": "tomoshibi-sample-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "架空店舗「炉端と酒 灯」の制作見本サイト",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "icons": "node scripts/build-icons.mjs",
+    "credits": "node scripts/build-credits.mjs"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
+  }
+}
